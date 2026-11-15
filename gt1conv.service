@@ -1,0 +1,16 @@
+[Unit]
+Description=GT-1 USB IR convolver
+After=sound.target
+StartLimitIntervalSec=0
+
+[Service]
+EnvironmentFile=-/etc/default/gt1conv
+ExecStartPre=/bin/sh -c 'for g in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do echo performance > $g; done'
+ExecStart=/usr/local/bin/gt1conv -C /home/pi/gt1conv.conf $OPTS
+Restart=always
+RestartSec=2
+LimitRTPRIO=95
+LimitMEMLOCK=infinity
+
+[Install]
+WantedBy=multi-user.target

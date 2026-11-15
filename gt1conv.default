@@ -1,0 +1,3 @@
+# audio options (IR mapping lives in /home/pi/gt1conv.conf)
+# -p period, -f fill, -m mono (half CPU), -s stats interval in s
+OPTS=-p 8 -f 24 -s 60
